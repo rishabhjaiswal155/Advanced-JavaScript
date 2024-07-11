@@ -125,28 +125,54 @@
 
 //Class keyword in JavaScript
 
-class Person{
-    constructor(fName,lName){
-        this.firstName=fName
-        this.lastName=lName
-    }
-     sayName(){
-          return this.firstName+' '+this.lastName        
+// class Person{
+//     constructor(fName,lName){
+//         this.firstName=fName
+//         this.lastName=lName
+//     }
+//      sayName(){
+//           return this.firstName+' '+this.lastName        
+//     }
+// }
+
+// const classP1=new Person('Rishabh','Jaiswal')
+// console.log(classP1.sayName())
+
+// class SuperHero extends Person{
+//     constructor(fName,lName){
+//         super(fName,lName)
+//         this.isSuperHero=true
+//     }
+//     fightCrime(){
+//         console.log('Fighting Crime')
+//     }
+// }
+
+// const batman=new SuperHero('Lucky','Jaiswal')
+// console.log(batman.sayName())
+
+//Iterables and Itertaors
+
+const obj={
+    [Symbol.iterator]:function(){
+        let step=0
+        const iterator={
+            next:function(){
+                step++
+                if(step===1){
+                    return {value:'Hello',done:false}
+                }
+                else if(step===2){
+                    return {value:'World',done:false}
+                }
+                return {value:undefined,done:true}
+            }
+
+        }
+        return iterator
     }
 }
 
-const classP1=new Person('Rishabh','Jaiswal')
-console.log(classP1.sayName())
-
-class SuperHero extends Person{
-    constructor(fName,lName){
-        super(fName,lName)
-        this.isSuperHero=true
-    }
-    fightCrime(){
-        console.log('Fighting Crime')
-    }
+for(const word of obj){
+    console.log(word)
 }
-
-const batman=new SuperHero('Lucky','Jaiswal')
-console.log(batman.sayName())
