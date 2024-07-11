@@ -93,32 +93,60 @@
 
 //concept of Prototype and Prototypal inheritance
 
-function Person(fName,lName){
-    this.firstName=fName
-    this.lastName=lName
+// function Person(fName,lName){
+//     this.firstName=fName
+//     this.lastName=lName
+// }
+
+// // const person1=new Person('Rishabh','Jaiswal')
+// // const person2=new Person('Lucky','Jaiswal')
+
+// Person.prototype.getFullName=function(){
+//     return this.firstName +' '+ this.lastName
+// }
+
+// // console.log(person1.getFullName())
+// // console.log(person2.getFullName())
+
+// function SuperHero(fName,lName){
+//     Person.call(this,fName,lName)
+//     this.isSuperHero=true
+// }
+
+// SuperHero.prototype.fightCrime=function(){
+//     console.log('Fighting Crime')
+// }
+// SuperHero.prototype=Object.create(Person.prototype)
+// SuperHero.prototype.constructor=SuperHero//cleanUp
+
+// const batman=new SuperHero('Rishabh','Jaiswal')
+
+// console.log(batman.getFullName())
+
+//Class keyword in JavaScript
+
+class Person{
+    constructor(fName,lName){
+        this.firstName=fName
+        this.lastName=lName
+    }
+     sayName(){
+          return this.firstName+' '+this.lastName        
+    }
 }
 
-// const person1=new Person('Rishabh','Jaiswal')
-// const person2=new Person('Lucky','Jaiswal')
+const classP1=new Person('Rishabh','Jaiswal')
+console.log(classP1.sayName())
 
-Person.prototype.getFullName=function(){
-    return this.firstName +' '+ this.lastName
+class SuperHero extends Person{
+    constructor(fName,lName){
+        super(fName,lName)
+        this.isSuperHero=true
+    }
+    fightCrime(){
+        console.log('Fighting Crime')
+    }
 }
 
-// console.log(person1.getFullName())
-// console.log(person2.getFullName())
-
-function SuperHero(fName,lName){
-    Person.call(this,fName,lName)
-    this.isSuperHero=true
-}
-
-SuperHero.prototype.fightCrime=function(){
-    console.log('Fighting Crime')
-}
-SuperHero.prototype=Object.create(Person.prototype)
-SuperHero.prototype.constructor=SuperHero//cleanUp
-
-const batman=new SuperHero('Rishabh','Jaiswal')
-
-console.log(batman.getFullName())
+const batman=new SuperHero('Lucky','Jaiswal')
+console.log(batman.sayName())
