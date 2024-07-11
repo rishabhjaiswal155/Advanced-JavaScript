@@ -153,26 +153,46 @@
 
 //Iterables and Itertaors
 
-const obj={
-    [Symbol.iterator]:function(){
-        let step=0
-        const iterator={
-            next:function(){
-                step++
-                if(step===1){
-                    return {value:'Hello',done:false}
-                }
-                else if(step===2){
-                    return {value:'World',done:false}
-                }
-                return {value:undefined,done:true}
-            }
+// const obj={
+//     [Symbol.iterator]:function(){
+//         let step=0
+//         const iterator={
+//             next:function(){
+//                 step++
+//                 if(step===1){
+//                     return {value:'Hello',done:false}
+//                 }
+//                 else if(step===2){
+//                     return {value:'World',done:false}
+//                 }
+//                 return {value:undefined,done:true}
+//             }
 
-        }
-        return iterator
-    }
+//         }
+//         return iterator
+//     }
+// }
+
+// for(const word of obj){
+//     console.log(word)
+// }
+
+//Generators
+
+// function normalFunction(){
+//     console.log('Hello')
+//     console.log('World')
+// }
+
+// normalFunction()
+// normalFunction()
+
+function *generatorFunction(){
+    yield 'Hello'
+    yield 'World'
 }
 
-for(const word of obj){
+const generatorobj=generatorFunction()
+for(const word of generatorobj){
     console.log(word)
 }
