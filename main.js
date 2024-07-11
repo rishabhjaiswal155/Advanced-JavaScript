@@ -30,28 +30,62 @@
 
 //Function Currying: function with multiple argument is transformed in function with single arg
 //sum(a,b,c)====>>sum(a)(b)(c)===> this is currying
-function sum(a,b,c){
-    return a+b+c
-}
+// function sum(a,b,c){
+//     return a+b+c
+// }
 
-//console.log(sum(2,3,5))
+// //console.log(sum(2,3,5))
 
-function curry(fn){
-    return function(a){
-        return function(b){
-            return function(c){
-                return fn(a,b,c)
-            }
-        }
+// function curry(fn){
+//     return function(a){
+//         return function(b){
+//             return function(c){
+//                 return fn(a,b,c)
+//             }
+//         }
+//     }
+// }
+
+// const curriedSum=curry(sum)
+// console.log(curriedSum(2)(3)(5))
+// //OR
+// const add2=curriedSum(2)
+// const add3=add2(3)
+// const add5=add3(5)
+// console.log(add5)
+
+
+//this Keyword
+
+//Implicit Binding
+
+const person={
+    name:'Rishabh Jaiswal',
+    sayName:function(){
+        console.log(`This is ${this.name}`)
     }
 }
+person.sayName()
 
-const curriedSum=curry(sum)
-console.log(curriedSum(2)(3)(5))
-//OR
-const add2=curriedSum(2)
-const add3=add2(3)
-const add5=add3(5)
-console.log(add5)
+//Explicit Binding
 
+globalThis.name='Amol'//for Default Binding
 
+function sayName(name){
+    console.log(`This is ${this.name}`)
+}
+
+sayName.call(person)
+
+//New Binding
+
+function Person(name){
+    this.name=name
+}
+
+const p1=new Person('Lucky')
+const p2=new Person('Surabhi')
+console.log(p1.name,p2.name)
+
+//Default Binding
+sayName()
