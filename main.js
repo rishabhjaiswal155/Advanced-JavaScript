@@ -91,19 +91,34 @@
 // sayName()
 
 
-//concept of Prototype
+//concept of Prototype and Prototypal inheritance
 
 function Person(fName,lName){
     this.firstName=fName
     this.lastName=lName
 }
 
-const person1=new Person('Rishabh','Jaiswal')
-const person2=new Person('Lucky','Jaiswal')
+// const person1=new Person('Rishabh','Jaiswal')
+// const person2=new Person('Lucky','Jaiswal')
 
 Person.prototype.getFullName=function(){
     return this.firstName +' '+ this.lastName
 }
 
-console.log(person1.getFullName())
-console.log(person2.getFullName())
+// console.log(person1.getFullName())
+// console.log(person2.getFullName())
+
+function SuperHero(fName,lName){
+    Person.call(this,fName,lName)
+    this.isSuperHero=true
+}
+
+SuperHero.prototype.fightCrime=function(){
+    console.log('Fighting Crime')
+}
+SuperHero.prototype=Object.create(Person.prototype)
+SuperHero.prototype.constructor=SuperHero//cleanUp
+
+const batman=new SuperHero('Rishabh','Jaiswal')
+
+console.log(batman.getFullName())
