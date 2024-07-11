@@ -59,33 +59,51 @@
 
 //Implicit Binding
 
-const person={
-    name:'Rishabh Jaiswal',
-    sayName:function(){
-        console.log(`This is ${this.name}`)
-    }
+// const person={
+//     name:'Rishabh Jaiswal',
+//     sayName:function(){
+//         console.log(`This is ${this.name}`)
+//     }
+// }
+// person.sayName()
+
+// //Explicit Binding
+
+// globalThis.name='Amol'//for Default Binding
+
+// function sayName(name){
+//     console.log(`This is ${this.name}`)
+// }
+
+// sayName.call(person)
+
+// //New Binding
+
+// function Person(name){
+//     this.name=name
+// }
+
+// const p1=new Person('Lucky')
+// const p2=new Person('Surabhi')
+// console.log(p1.name,p2.name)
+
+// //Default Binding
+// sayName()
+
+
+//concept of Prototype
+
+function Person(fName,lName){
+    this.firstName=fName
+    this.lastName=lName
 }
-person.sayName()
 
-//Explicit Binding
+const person1=new Person('Rishabh','Jaiswal')
+const person2=new Person('Lucky','Jaiswal')
 
-globalThis.name='Amol'//for Default Binding
-
-function sayName(name){
-    console.log(`This is ${this.name}`)
+Person.prototype.getFullName=function(){
+    return this.firstName +' '+ this.lastName
 }
 
-sayName.call(person)
-
-//New Binding
-
-function Person(name){
-    this.name=name
-}
-
-const p1=new Person('Lucky')
-const p2=new Person('Surabhi')
-console.log(p1.name,p2.name)
-
-//Default Binding
-sayName()
+console.log(person1.getFullName())
+console.log(person2.getFullName())
